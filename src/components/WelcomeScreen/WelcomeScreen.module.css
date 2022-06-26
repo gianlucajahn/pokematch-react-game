@@ -1,0 +1,25 @@
+.WelcomeScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 35vw;
+    height: auto;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.sound {
+    margin-right: 4px;
+    padding-bottom: 4px;
+    width: 25px;
+    height: auto;
+}
