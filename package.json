@@ -11,6 +11,8 @@
     "react-dom": "^18.2.0",
     "react-howler": "^5.2.0",
     "react-scripts": "5.0.1",
+    "react-simple-typewriter": "^3.0.1",
+    "typed.js": "^2.0.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -9,7 +9,7 @@
 }
 
 .box {
-    margin-top: 90px;
+    margin-top: 80px;
     display: flex;
     width: 35%;
     position: relative;
@@ -19,7 +19,7 @@
     height: 160px;
     position: absolute;
     left: -17.5%;
-    top: 87.5%;
+    top: 88.5%;
 }
 
 .close {

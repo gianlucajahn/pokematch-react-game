@@ -10,9 +10,9 @@ const RulesPopup = ({ toggleRules }) => {
                 <p className="nes-balloon from-left nes-pointer">
                     Rules <br /><br />
     
-                    1. Select a Pokemon you haven't selected before. You get 1 point per such pokemon. <br /> <br />
-                    2. If you select a Pokemon you already selected before, your score gets reset to 0. <br /> <br />
-                    3. If your score gets reset, you lose. You can select all Pokemon again and start from scratch.
+                    1. Select a Pokémon you haven't selected before. You get 1 point per such Pokémon. <br /> <br />
+                    2. If you select a Pokémon you already selected before, your score gets reset to 0. <br /> <br />
+                    3. If your score gets reset, you lose. You can select all Pokémon again and start from scratch.
                 </p>
                 <button className={styles.close} onClick={toggleRules}>
                     <img src={require("../../resources/images/close.png")} alt="Close" />
