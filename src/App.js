@@ -94,7 +94,12 @@ function App() {
         startGame={startGame} />;
       break;
     case "game":
-      displayedComponent = <Game />;
+      displayedComponent = <Game 
+        toggleRules={toggleRules}
+        pauseAudio={pauseAudio}
+        startAudio={startAudio}
+        music={music}
+      />;
   }
 
 

@@ -1,8 +1,62 @@
 .game {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .game h3,
 .game h4 {
     color: white;
+}
+
+.header {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.highscore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+}
+
+.highscore h2 {
+    margin-top: 10px;
+}
+
+.footer {
+    margin-top: 81%;
+    display: flex;
+    justify-content: center;
+}
+
+.footerBtn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background-color: #2e2e2e;
+    color: white;
+    border: 1px transparent;
+    font-size: 12px;
+}
+
+.icon {
+    width: 28px;
+    height: auto;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 60px;
+}
+
+.sound {
+    margin-right: 4px;
+    padding-bottom: 4px;
+    width: 25px;
+    height: auto;
 }
