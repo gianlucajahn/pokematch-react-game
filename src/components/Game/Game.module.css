@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .game {
     display: flex;
     flex-direction: column;
@@ -25,7 +30,7 @@
 }
 
 .footer {
-    margin-top: 81%;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
 }
@@ -59,4 +64,55 @@
     padding-bottom: 4px;
     width: 25px;
     height: auto;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.pokemon {
+    border: 1px transparent;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+}
+
+.pokemon:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.pokemon:focus {
+    outline: none;
+}
+
+.pokemon:active {
+    transform: scale(0.9);
+}
+
+.pokemon div {
+    display: flex;
+    gap: 6px;
+    height: 20px;
+}
+
+.pokeball {
+    width: 16px;
+    height: 16px;
+}
+
+.pokemonImg {
+    width: 130px;
+    margin-bottom: 14px;
+}
+
+.pokemonDesc {
+    color: #2e2e2e;
+    font-size: 12px;
 }

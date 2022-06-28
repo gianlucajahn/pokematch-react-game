@@ -77,6 +77,7 @@ function App() {
 
   // Decides which component to show, based on game state
   let displayedComponent = "";
+  let AppBG = document.getElementById('app');
   switch (gameState) {
     case "start":
       displayedComponent = <WelcomeScreen 
@@ -101,7 +102,6 @@ function App() {
         music={music}
       />;
   }
-
 
   return (
     <div className={isStarted ? styles.game : styles.App} id="app">
