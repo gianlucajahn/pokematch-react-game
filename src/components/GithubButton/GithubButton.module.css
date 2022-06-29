@@ -1,0 +1,40 @@
+.githubBtn {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: #2e2e2e;
+    color: white;
+    margin-top: 50px;
+    width: 250px;
+    border-radius: 12px;
+    border: 1px transparent;
+}
+
+.githubBtn:hover {
+    background-color: #414141
+}
+
+.githubBtn:focus {
+    outline: none;
+}
+
+.githubBtn:active {
+    transform: scale(0.9);
+}
+
+.githubBtn:hover {
+
+}
+
+.githubImg {
+    width: 27px;
+    height: 25px;
+}
+
+.githubBtn h3 {
+    padding-top: 8px;
+    font-size: 12px;
+}
+

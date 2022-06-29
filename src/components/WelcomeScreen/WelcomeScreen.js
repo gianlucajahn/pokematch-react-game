@@ -1,11 +1,13 @@
 import styles from './WelcomeScreen.module.css';
 import "nes.css/css/nes.min.css";
+import GithubButton from '../GithubButton/GithubButton';
 
 const WelcomeScreen = ({ toggleRules,
                          startAudio,
                          pauseAudio,
                          music,
-                         startIntroduction
+                         startIntroduction,
+                         toggleCopyright
                         }) => {
   return (
     <div className={styles.WelcomeScreen}>
@@ -18,7 +20,12 @@ const WelcomeScreen = ({ toggleRules,
                 <img src={music ? require("../../resources/images/sound-off.png") : require("../../resources/images/sound-on.png")} alt="Toggle Sound" className={styles.sound} />
                 Music
             </button>
+            <a class="nes-btn" href="#" onClick={toggleCopyright}>Copyright</a>
         </div>
+
+        <div className={styles.footer}>
+          <GithubButton />
+      </div>
     </div>
   );
 }

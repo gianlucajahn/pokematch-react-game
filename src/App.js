@@ -8,10 +8,13 @@ import Game from './components/Game/Game';
 import strings from './utils/strings';
 import React, { useState, useRef } from 'react';
 import { isClickableInput } from '@testing-library/user-event/dist/utils';
+import GithubButton from './components/GithubButton/GithubButton';
+import CopyrightPopup from './components/copyr/copyr';
 
 function App() {
   // State
   const [rulesDisplay, setRulesDisplay] = useState(false);
+  const [copyrightDisplay, setCopyrightDisplay] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [gameState, setGameState] = useState("start");
   const [introState, setIntroState] = useState(0);
@@ -75,6 +78,14 @@ function App() {
     }
   }
 
+  const toggleCopyright = () => {
+    let click = new Audio(require("../src/resources/sound/click.mp3"));
+    click.volume = 0.2
+    click.play();
+
+    setCopyrightDisplay(!copyrightDisplay);
+  }
+
   // Decides which component to show, based on game state
   let displayedComponent = "";
   let AppBG = document.getElementById('app');
@@ -85,6 +96,7 @@ function App() {
         toggleRules={toggleRules} 
         startAudio={startAudio} 
         pauseAudio={pauseAudio} 
+        toggleCopyright={toggleCopyright}
         music={music}
       />;
       break;
@@ -99,6 +111,7 @@ function App() {
         toggleRules={toggleRules}
         pauseAudio={pauseAudio}
         startAudio={startAudio}
+        toggleCopyright={toggleCopyright}
         music={music}
       />;
   }
@@ -112,6 +125,9 @@ function App() {
       {displayedComponent}
       {rulesDisplay ? <RulesPopup 
         toggleRules={toggleRules} /> : ""}
+
+      {copyrightDisplay ? <CopyrightPopup 
+        toggleCopyright={toggleCopyright} /> : ""}
     </div>
   );
 }

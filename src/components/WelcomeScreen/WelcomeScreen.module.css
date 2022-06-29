@@ -10,7 +10,7 @@
 }
 
 .logo {
-    margin-top: 10px;
+    margin-top: 60px;
     margin-bottom: px;
     width: 35vw;
     height: auto;
@@ -19,6 +19,7 @@
 .buttons {
     display: flex;
     gap: 8px;
+    margin-top: 20px;
 }
 
 .sound {
@@ -26,4 +27,8 @@
     padding-bottom: 4px;
     width: 25px;
     height: auto;
+}
+
+.footer {
+    margin-top: 370px;
 }

@@ -2,19 +2,19 @@ import styles from './Game.module.css';
 import React, { useEffect, useState } from 'react';
 import "nes.css/css/nes.min.css";
 import pokemons from '../../utils/pokemonArray';
+import GithubButton from '../GithubButton/GithubButton';
 
 const Game = props => {
   const {
     toggleRules,
     pauseAudio,
     startAudio,
-    music
+    music,
+    toggleCopyright
   } = props;
 
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
-  const [latestScore, setLatestScore] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
   const [pokemonsArray, setPokemonArray] = useState(pokemons);
   const [renderedPokemon, setRenderedPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState({});
@@ -52,7 +52,12 @@ const Game = props => {
   }, [selectedPokemon, score]);
 
   function resetScore() {
+    let click = new Audio(require("../../resources/sound/click.mp3"));
+    click.volume = 0.2
+    click.play();
+
     setScore(0);
+    setHighscore(0);
   }
 
   function handleCatch(e) {
@@ -67,11 +72,17 @@ const Game = props => {
             pokemon.catched = false;
             return pokemon
         });
-        setGameOver(true);
+        if (score > highscore) {
+            setHighscore(score);
+        }
         setScore(0);
+
     } else if (pokemonsArray[selectedPokemonIndex].catched === false) {
         setSelectedPokemon(pokemonsArray[selectedPokemonIndex]);
         setScore(score + 1);
+        if (score >= highscore) {
+            setHighscore(score + 1);
+        }
         pokemonsArray[selectedPokemonIndex].catched = true;
     }
   }
@@ -86,6 +97,7 @@ const Game = props => {
         <div className={styles.buttons}>
             <button type="button" className="nes-btn is-primary" onClick={toggleRules}>Rules</button>
             <button type="button" className="nes-btn is-error" onClick={resetScore}>Reset</button>
+            <a class="nes-btn" href="#" onClick={toggleCopyright}>Copyright</a>
             <button type="button" className="nes-btn is-warning" onClick={music ? pauseAudio : startAudio}>
                 <img src={music ? require("../../resources/images/sound-off.png") : require("../../resources/images/sound-on.png")} alt="Toggle Sound" className={styles.sound} />
                 Music
@@ -114,6 +126,8 @@ const Game = props => {
                 )
             })}
         </div>
+
+        <GithubButton />
     </div>
   );
 }
