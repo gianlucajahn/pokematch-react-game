@@ -17,40 +17,39 @@ const Game = props => {
   const [gameOver, setGameOver] = useState(false);
   const [pokemonsArray, setPokemonArray] = useState(pokemons);
   const [renderedPokemon, setRenderedPokemon] = useState([]);
-  const [nextPokemon, setNextPokemon] = useState({});
   const [selectedPokemon, setSelectedPokemon] = useState({});
 
+  let nextPokemon;
   useEffect(() => {
-        for (let i = 0; i < 9; i++) {
-            if (score === 49) {
-                return
-            } else if (renderedPokemon.length == 0) {
-                setNextPokemon(pokemonsArray[Math.floor(Math.random() * 49)]);
-                setRenderedPokemon(nextPokemon);
-            } else if (renderedPokemon.find(pokemon => pokemon.catched === false)) {
-                setNextPokemon(pokemonsArray[Math.floor(Math.random() * 49)]);
-                while (renderedPokemon.find(pokemon => pokemon === nextPokemon)) {
-                    setNextPokemon(pokemonsArray[Math.floor(Math.random() * 49)]);
-                }
-                
-                setRenderedPokemon(...renderedPokemon, nextPokemon);
-            } else if (renderedPokemon.find(pokemon => pokemon.catched === false) === undefined) {
-                let startIndex = pokemonsArray.findIndex(pokemon => pokemon.catched === false);
-                setNextPokemon(pokemonsArray[Math.floor(Math.random() * (49 - startIndex)) + startIndex]);
-                while (nextPokemon.catched === true) {
-                    setNextPokemon(pokemonsArray[Math.floor(Math.random() * (49 - startIndex)) + startIndex]);
-                }
-    
-                setRenderedPokemon(...renderedPokemon, nextPokemon);
-                console.log(renderedPokemon);
-            } else {
-                console.log("Debugging createRenderedPokemonArray");
+    let newArray = [];
+    for (let i = 0; i < 9; i++) {
+        if (score === 49) {
+            return
+        } else if (renderedPokemon.length == 0) {
+            nextPokemon = pokemonsArray[Math.floor(Math.random() * 49)];
+            newArray = [...newArray, nextPokemon];
+        } else if (renderedPokemon.find(pokemon => pokemon.catched === false)) {
+            nextPokemon = pokemonsArray[Math.floor(Math.random() * 49)];
+            while (newArray.find(pokemon => pokemon === nextPokemon)) {
+                nextPokemon = pokemonsArray[Math.floor(Math.random() * 49)];
             }
-        }
-    return () => {
+            
+            newArray = [...newArray, nextPokemon];
+        } else if (renderedPokemon.find(pokemon => pokemon.catched === false) === undefined) {
+            let startIndex = pokemonsArray.findIndex(pokemon => pokemon.catched === false);
+            nextPokemon = pokemonsArray[Math.floor(Math.random() * (49 - startIndex)) + startIndex];
+            while (nextPokemon.catched === true) {
+                nextPokemon = pokemonsArray[Math.floor(Math.random() * (49 - startIndex)) + startIndex]
+            }
 
+            newArray = [...newArray, nextPokemon];
+        } else {
+            console.log("Debugging createRenderedPokemonArray");
+        }
     }
-  }, [selectedPokemon]);
+
+    setRenderedPokemon(newArray);
+  }, [selectedPokemon, score]);
 
   function resetScore() {
     setScore(0);
@@ -62,14 +61,18 @@ const Game = props => {
     catchSound.play();
 
     let selectedPokemonIndex = pokemonsArray.findIndex(pokemon => pokemon.name === e.target.id);
-    setSelectedPokemon(pokemonsArray[selectedPokemonIndex]);
-    if (selectedPokemon.catched === true) {
+    if (pokemonsArray[selectedPokemonIndex].catched === true) {
+        setSelectedPokemon(pokemonsArray[selectedPokemonIndex]);
+        pokemonsArray.map((pokemon, index) => {
+            pokemon.catched = false;
+            return pokemon
+        });
         setGameOver(true);
         setScore(0);
-        setPokemonArray(pokemons);
-    } else if (selectedPokemon.catched === false) {
+    } else if (pokemonsArray[selectedPokemonIndex].catched === false) {
+        setSelectedPokemon(pokemonsArray[selectedPokemonIndex]);
         setScore(score + 1);
-        setPokemonArray(...pokemonsArray, pokemonsArray[selectedPokemonIndex].catched = true)
+        pokemonsArray[selectedPokemonIndex].catched = true;
     }
   }
 
