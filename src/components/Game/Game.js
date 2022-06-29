@@ -1,5 +1,5 @@
 import styles from './Game.module.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "nes.css/css/nes.min.css";
 import pokemons from '../../utils/pokemonArray';
 
@@ -13,53 +13,64 @@ const Game = props => {
 
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
-  const [catchedPokemon, setCatchedPokemon] = useState(null);
-  const [catchedPokemonIsWrong, setcatchedPokemonIsWrong] = useState(false);
+  const [latestScore, setLatestScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [pokemonsArray, setPokemonArray] = useState(pokemons);
+  const [renderedPokemon, setRenderedPokemon] = useState([]);
+  const [nextPokemon, setNextPokemon] = useState({});
+  const [selectedPokemon, setSelectedPokemon] = useState({});
 
-  let pokemonArray = pokemons;
-  let renderedPokemonArray = [];
-  const createRenderedPokemonArray = () => {
-    for (let i = 0; i < 9; i++) {
-        let newPokemon = {};
-
-        if (score === 49) {
-            return
-        }
-
-        if (renderedPokemonArray.find(pokemon => pokemon.catched === false)) {
-            newPokemon = pokemonArray[Math.floor(Math.random() * 50)];
-            while (renderedPokemonArray.find(pokemon => pokemon === newPokemon)) {
-                newPokemon = pokemonArray[Math.floor(Math.random() * 50)];
+  useEffect(() => {
+        for (let i = 0; i < 9; i++) {
+            if (score === 49) {
+                return
+            } else if (renderedPokemon.length == 0) {
+                setNextPokemon(pokemonsArray[Math.floor(Math.random() * 49)]);
+                setRenderedPokemon(nextPokemon);
+            } else if (renderedPokemon.find(pokemon => pokemon.catched === false)) {
+                setNextPokemon(pokemonsArray[Math.floor(Math.random() * 49)]);
+                while (renderedPokemon.find(pokemon => pokemon === nextPokemon)) {
+                    setNextPokemon(pokemonsArray[Math.floor(Math.random() * 49)]);
+                }
+                
+                setRenderedPokemon(...renderedPokemon, nextPokemon);
+            } else if (renderedPokemon.find(pokemon => pokemon.catched === false) === undefined) {
+                let startIndex = pokemonsArray.findIndex(pokemon => pokemon.catched === false);
+                setNextPokemon(pokemonsArray[Math.floor(Math.random() * (49 - startIndex)) + startIndex]);
+                while (nextPokemon.catched === true) {
+                    setNextPokemon(pokemonsArray[Math.floor(Math.random() * (49 - startIndex)) + startIndex]);
+                }
+    
+                setRenderedPokemon(...renderedPokemon, nextPokemon);
+                console.log(renderedPokemon);
+            } else {
+                console.log("Debugging createRenderedPokemonArray");
             }
-
-            renderedPokemonArray.push(newPokemon);
-        } else if ((renderedPokemonArray.find(pokemon => pokemon.catched === false)) === undefined) {
-            let startIndex = renderedPokemonArray.findIndex(pokemon => pokemon.catched === false);
-            newPokemon = pokemonArray[Math.floor(Math.random() * (50 - startIndex)) + startIndex]
-            while (newPokemon.catched === true) {
-                newPokemon = pokemonArray[Math.floor(Math.random() * (50 - startIndex)) + startIndex]
-            }
-
-            renderedPokemonArray.push(newPokemon);
-        } else if (score === 49) {
-            return;
-        } else {
-            console.log("Debugging createRenderedPokemonArray");
         }
+    return () => {
+
     }
-  }
-
-  createRenderedPokemonArray();
-  console.log(renderedPokemonArray);
+  }, [selectedPokemon]);
 
   function resetScore() {
     setScore(0);
   }
 
-  function handleCatch() {
+  function handleCatch(e) {
     let catchSound = new Audio(require("../../resources/sound/catch.mp3"));
     catchSound.volume = 0.25
     catchSound.play();
+
+    let selectedPokemonIndex = pokemonsArray.findIndex(pokemon => pokemon.name === e.target.id);
+    setSelectedPokemon(pokemonsArray[selectedPokemonIndex]);
+    if (selectedPokemon.catched === true) {
+        setGameOver(true);
+        setScore(0);
+        setPokemonArray(pokemons);
+    } else if (selectedPokemon.catched === false) {
+        setScore(score + 1);
+        setPokemonArray(...pokemonsArray, pokemonsArray[selectedPokemonIndex].catched = true)
+    }
   }
 
   return (
@@ -87,15 +98,15 @@ const Game = props => {
         </div>
 
         <div className={styles.board}>
-            {renderedPokemonArray.map((pokemon, index) => {
+            {renderedPokemon.map((pokemon, index) => {
                 return (
                     <button key={index} className={styles.pokemon} onClick={handleCatch} id={pokemon.name}>
-                        <img className={styles.pokemonImg} alt={pokemon.name} src={require(`../../resources/images/pokemon/${pokemon.name.toLowerCase()}.png`)} />
-                        <div>
-                            <img src={require("../../resources/images/pokeball.PNG")} alt="Pokeball" className={styles.pokeball} />
-                            <p className={styles.pokemonDesc}>Catch</p>
+                        <img className={styles.pokemonImg} src={require(`../../resources/images/pokemon/${pokemon.name.toLowerCase()}.png`)} id={pokemon.name}/>
+                        <div id={pokemon.name}>
+                            <img src={require("../../resources/images/pokeball.PNG")} alt="Pokeball" className={styles.pokeball} id={pokemon.name} />
+                            <p className={styles.pokemonDesc} id={pokemon.name}>Catch</p>
                         </div>
-                        <p className={styles.pokemonDesc}>{pokemon.name}</p>
+                        <p className={styles.pokemonDesc} id={pokemon.name}>{pokemon.name}</p>
                     </button>
                 )
             })}

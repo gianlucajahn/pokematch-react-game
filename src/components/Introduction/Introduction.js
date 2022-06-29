@@ -21,7 +21,7 @@ const Introduction = props => {
                     {introState <= 1 && strings[introState].cta} 
                     
                     {introState === 2 &&
-                    <button type="button" class="nes-btn is-success" onClick={startGame}>Start Game</button>
+                    <button type="button" className="nes-btn is-success" onClick={startGame}>Start Game</button>
                     }
                 </p>
         
