@@ -12,7 +12,7 @@ You can see a GIF of my application below. I am skipping through the introductio
 ## Performance
 I let [Google Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=de) run over my application to check for it's **performance, accessibility, use of best practices and SEO optimization**. You can view the results right below this paragraph.
 
-![Google Lighthouse Performance Results](https://i.ibb.co/G2VKW5P/performance-pokemon.png)
+![Google Lighthouse Performance Results](https://i.ibb.co/31tRhYt/performance-pokemon.png)
 
 ## Motivation
 My motivation in building this project was to learn more about functional components and the way they handled component lifecycles, which mostly reside in useEffect hooks. I certainly bumped into some issues when starting out and that's perfectly good, because that way I learnt why those issues occured, learnt to fix them and how to prevent them from happening in the future - more on that in the **"What I learned"** tab. 
