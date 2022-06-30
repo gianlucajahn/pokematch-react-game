@@ -66,6 +66,7 @@ function App() {
     setGameState("game");
   }
 
+  // Switch textbox content on click of the Continue-Button in Introduction
   const handleContinue = (e) => {
     let click = new Audio(require("../src/resources/sound/click.mp3"));
     click.volume = 0.2
@@ -78,6 +79,7 @@ function App() {
     }
   }
 
+  // Toggle visibility of the copyright info popup
   const toggleCopyright = () => {
     let click = new Audio(require("../src/resources/sound/click.mp3"));
     click.volume = 0.2

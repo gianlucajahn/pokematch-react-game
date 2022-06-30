@@ -20,7 +20,7 @@ const WelcomeScreen = ({ toggleRules,
                 <img src={music ? require("../../resources/images/sound-off.png") : require("../../resources/images/sound-on.png")} alt="Toggle Sound" className={styles.sound} />
                 Music
             </button>
-            <a class="nes-btn" href="#" onClick={toggleCopyright}>Copyright</a>
+            <a className="nes-btn" href="#" onClick={toggleCopyright}>Copyright</a>
         </div>
 
         <div className={styles.footer}>

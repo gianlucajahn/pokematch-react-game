@@ -31,7 +31,6 @@
     background-color: transparent;
     border: 0px transparent;
     cursor: pointer;
-    transition: all 0.2s;
 }
 
 .close:focus {

@@ -19,6 +19,7 @@ const Game = props => {
   const [renderedPokemon, setRenderedPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState({});
 
+  // useEffect hook to change up array of rendered pokemon whenever necessary
   let nextPokemon;
   useEffect(() => {
     let newArray = [];
@@ -51,6 +52,7 @@ const Game = props => {
     setRenderedPokemon(newArray);
   }, [selectedPokemon, score]);
 
+  // Reset Score on Click of the Reset Button in Game
   function resetScore() {
     let click = new Audio(require("../../resources/sound/click.mp3"));
     click.volume = 0.2
@@ -60,6 +62,7 @@ const Game = props => {
     setHighscore(0);
   }
 
+  // React corresponding to the user selecting a pokemon
   function handleCatch(e) {
     let catchSound = new Audio(require("../../resources/sound/catch.mp3"));
     catchSound.volume = 0.25
@@ -97,17 +100,17 @@ const Game = props => {
         <div className={styles.buttons}>
             <button type="button" className="nes-btn is-primary" onClick={toggleRules}>Rules</button>
             <button type="button" className="nes-btn is-error" onClick={resetScore}>Reset</button>
-            <a class="nes-btn" href="#" onClick={toggleCopyright}>Copyright</a>
+            <a className="nes-btn" href="#" onClick={toggleCopyright}>Copyright</a>
             <button type="button" className="nes-btn is-warning" onClick={music ? pauseAudio : startAudio}>
                 <img src={music ? require("../../resources/images/sound-off.png") : require("../../resources/images/sound-on.png")} alt="Toggle Sound" className={styles.sound} />
                 Music
             </button>
         </div>
 
-        <div class={styles.scoreboard}>
+        <div className={styles.scoreboard}>
             <h1>Score: {score}</h1>
             <div className={styles.highscore}>
-               <i class="nes-icon trophy is-medium"></i>
+               <i className="nes-icon trophy is-medium"></i>
                <h2>High Score: {highscore}</h2>
             </div>
         </div>

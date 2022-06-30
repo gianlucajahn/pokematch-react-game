@@ -12,6 +12,14 @@
     border: 1px transparent;
 }
 
+.githubLink {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
 .githubBtn:hover {
     background-color: #414141
 }
