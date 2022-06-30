@@ -39,7 +39,7 @@ const Game = props => {
         } else if (renderedPokemon.find(pokemon => pokemon.catched === false) === undefined) {
             let startIndex = pokemonsArray.findIndex(pokemon => pokemon.catched === false);
             nextPokemon = pokemonsArray[Math.floor(Math.random() * (49 - startIndex)) + startIndex];
-            while (nextPokemon.catched === true) {
+            while (nextPokemon.catched === true || (newArray.find(pokemon => pokemon === nextPokemon))) {
                 nextPokemon = pokemonsArray[Math.floor(Math.random() * (49 - startIndex)) + startIndex]
             }
 
