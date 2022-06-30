@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# 🐉 PokeMatch - A React Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A pokemon-inspired React Game SPA (single-page-application) featuring a rich UX including a welcome screen, a rules popup, a popup containing copyright information, an introduction by a pokemon professor and the actual game. 
 
-## Available Scripts
+## 🔴 Demo
+🎮 [Live Demo](https://gianlucajahn.github.io/pokematch-react-game)
 
-In the project directory, you can run:
+## 🎥 Showcase
+You can see a GIF of my application below. I am looking through the rules, skipping through the introduction, opening the copyright info popup and playing a couple of rounds.. <br /> <br />
+![](https://github.com/gianlucajahn/pokematch-react-game/blob/main/PokeMatch.gif?raw=true)
 
-### `npm start`
+## Performance
+I let [Google Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=de) run over my application to check for it's **performance, accessibility, use of best practices and SEO optimization**. You can view the results right below this paragraph.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Google Lighthouse Performance Results](https://i.ibb.co/31tRhYt/performance-pokemon.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Motivation
+My motivation in building this project was to learn more about functional components and the way they handled component lifecycles, which mostly reside in useEffect hooks. I certainly bumped into some issues when starting out and that's perfectly good, because that way I learnt why those issues occured, learnt to fix them and how to prevent them from happening in the future - more on that in the **"What I learned"** tab. 
 
-### `npm test`
+## What I learned:
+- using component lifecycle hooks such as the useEffect hook to work with components throughout their lifespan
+- refactoring code to fit the "Automatic Batching" approach of React State, including state updater functions
+- using cleanup functions to improve an application's performance and prevent unintended side effects
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
+- Immersive UX including Introduction, Rules and Welcome Screen
+- Various popups with additional info
+- High Score & Score Reset Feature 
+- Toggleable Soundtrack & onClick Sound Effects
 
-### `npm run build`
+## Technologies Used
+- React
+- CSS (CSS Modules)
+- NES.CSS
+- Photoshop
+- NPM
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Legal: Copyright Informations
+All rights to all pictures, music and names on this website belong to Nintendo/Creatures Inc. and GAME FREAK. I only used them to build an environment for myself to learn coding in React with. If you are an owner of the copyrighted material, please let me know if you have any issues with this and I'll take the page down immediately.
