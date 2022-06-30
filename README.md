@@ -34,3 +34,6 @@ My motivation in building this project was to learn more about functional compon
 - NES.CSS
 - Photoshop
 - NPM
+
+## Legal: Copyright Informations
+All rights to all pictures, music and names on this website belong to Nintendo/Creatures Inc. and GAME FREAK. I only used them to build an environment for myself to learn coding in React with. If you are an owner of the copyrighted material, please let me know if you have any issues with this and I'll take the page down immediately.
