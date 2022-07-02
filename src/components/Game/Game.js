@@ -13,7 +13,7 @@ const Game = props => {
     toggleCopyright
   } = props;
 
-  const [score, setScore] = useState(48);
+  const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
   const [pokemonsArray, setPokemonArray] = useState(pokemons);
   const [renderedPokemon, setRenderedPokemon] = useState([]);
