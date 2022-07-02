@@ -13,7 +13,7 @@ const Game = props => {
     toggleCopyright
   } = props;
 
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(49);
   const [highscore, setHighscore] = useState(0);
   const [pokemonsArray, setPokemonArray] = useState(pokemons);
   const [renderedPokemon, setRenderedPokemon] = useState([]);
@@ -119,7 +119,12 @@ const Game = props => {
             </div>
         </div>
 
-        <div className={styles.board}>
+        {score === 49 ? 
+             <div className={styles.win}>
+                 <h3 className={styles.congratulations}>Congratulations! You won!</h3> 
+                 <p>Thank you for checking out my game. If you'd like, feel free to checkout my GitHub Profile below to take a look at some more projects of mine!</p>
+            </div>
+            : <div className={styles.board}>
             {renderedPokemon.map((pokemon, index) => {
                 return (
                     <button key={index} className={styles.pokemon} onClick={handleCatch} id={pokemon.name}>
@@ -132,7 +137,7 @@ const Game = props => {
                     </button>
                 )
             })}
-        </div>
+        </div>}
 
         <GithubButton />
     </div>
