@@ -13,7 +13,7 @@ const Game = props => {
     toggleCopyright
   } = props;
 
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(48);
   const [highscore, setHighscore] = useState(0);
   const [pokemonsArray, setPokemonArray] = useState(pokemons);
   const [renderedPokemon, setRenderedPokemon] = useState([]);
@@ -25,18 +25,18 @@ const Game = props => {
     let newArray = [];
     for (let i = 0; i < 9; i++) {
         if (score === 49) {
-            return
-        } else if (renderedPokemon.length == 0) {
+            setRenderedPokemon(newArray);
+        } else if (newArray.length == 0) {
             nextPokemon = pokemonsArray[Math.floor(Math.random() * 49)];
             newArray = [...newArray, nextPokemon];
-        } else if (renderedPokemon.find(pokemon => pokemon.catched === false)) {
+        } else if (newArray.find(pokemon => pokemon.catched === false)) {
             nextPokemon = pokemonsArray[Math.floor(Math.random() * 49)];
             while (newArray.find(pokemon => pokemon === nextPokemon)) {
                 nextPokemon = pokemonsArray[Math.floor(Math.random() * 49)];
             }
             
             newArray = [...newArray, nextPokemon];
-        } else if (renderedPokemon.find(pokemon => pokemon.catched === false) === undefined) {
+        } else if (newArray.find(pokemon => pokemon.catched === false) === undefined) {
             let startIndex = pokemonsArray.findIndex(pokemon => pokemon.catched === false);
             nextPokemon = pokemonsArray[Math.floor(Math.random() * (49 - startIndex)) + startIndex];
             while (nextPokemon.catched === true || (newArray.find(pokemon => pokemon === nextPokemon))) {
@@ -60,9 +60,13 @@ const Game = props => {
 
     setScore(0);
     setHighscore(0);
+    pokemonsArray.map((pokemon, index) => {
+        pokemon.catched = false;
+        return pokemon
+    });
   }
 
-  // React corresponding to the user selecting a pokemon
+  // React responding to the user selecting a pokemon
   function handleCatch(e) {
     let catchSound = new Audio(require("../../resources/sound/catch.mp3"));
     catchSound.volume = 0.25
