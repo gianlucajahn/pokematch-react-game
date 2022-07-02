@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/pokematch-react-game/static/css/main.f77a8409.css",
-    "main.js": "/pokematch-react-game/static/js/main.debaf341.js",
+    "main.css": "/pokematch-react-game/static/css/main.b385fe5e.css",
+    "main.js": "/pokematch-react-game/static/js/main.c166c89a.js",
     "static/js/787.94292652.chunk.js": "/pokematch-react-game/static/js/787.94292652.chunk.js",
     "static/media/soundtrack.mp3": "/pokematch-react-game/static/media/soundtrack.a0efbbbc9d3ffba4583f.mp3",
     "static/media/welcomeScreen-background.png": "/pokematch-react-game/static/media/welcomeScreen-background.4d785b184a1733e9a231.png",
@@ -64,12 +64,12 @@
     "static/media/logo.svg": "/pokematch-react-game/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "static/media/catch.mp3": "/pokematch-react-game/static/media/catch.f7b800b2b02a2a142e72.mp3",
     "index.html": "/pokematch-react-game/index.html",
-    "main.f77a8409.css.map": "/pokematch-react-game/static/css/main.f77a8409.css.map",
-    "main.debaf341.js.map": "/pokematch-react-game/static/js/main.debaf341.js.map",
+    "main.b385fe5e.css.map": "/pokematch-react-game/static/css/main.b385fe5e.css.map",
+    "main.c166c89a.js.map": "/pokematch-react-game/static/js/main.c166c89a.js.map",
     "787.94292652.chunk.js.map": "/pokematch-react-game/static/js/787.94292652.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f77a8409.css",
-    "static/js/main.debaf341.js"
+    "static/css/main.b385fe5e.css",
+    "static/js/main.c166c89a.js"
   ]
 }
