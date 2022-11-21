@@ -1,6 +1,6 @@
 <h1 align="center">🐉 React PokéMatch Game</h1>
 
-![]([/src/resources/images/banner.png](https://i.imgur.com/EjDCnMK.png))
+![](https://i.imgur.com/EjDCnMK.png)
 <p align="center">
   PokéMatch Browser Game built with React and NES.CSS
 </p>
